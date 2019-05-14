@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MVVMExample</string>
+    <string name="load_list_using_retrofit">Load Countries</string>
 </resources>

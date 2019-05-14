@@ -5,6 +5,6 @@ import com.codeinger.mvvmexample.api.retrofit.ApiCallback;
 
 import java.util.List;
 
-public interface CountryRepositaryI {
+public interface CountryRepositoryI {
     void getCountryList(ApiCallback<List<Country>> countryList);
 }

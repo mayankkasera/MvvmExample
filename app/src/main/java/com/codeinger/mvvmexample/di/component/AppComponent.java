@@ -1,8 +1,6 @@
 package com.codeinger.mvvmexample.di.component;
 
-import android.app.Application;
-
-import com.codeinger.mvvmexample.api.repo.CountryRepositary;
+import com.codeinger.mvvmexample.api.repo.CountryRepository;
 import com.codeinger.mvvmexample.di.modules.ApplicationModule;
 import com.codeinger.mvvmexample.di.modules.NetworkModule;
 
@@ -14,5 +12,5 @@ import dagger.Component;
 @Component(modules = { ApplicationModule.class, NetworkModule.class})
 public interface AppComponent {
 
-    void inject(CountryRepositary countryRepositary);
+    void inject(CountryRepository countryRepository);
 }

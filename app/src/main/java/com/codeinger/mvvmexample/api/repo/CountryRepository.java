@@ -4,10 +4,6 @@ import com.codeinger.mvvmexample.MainApplication;
 import com.codeinger.mvvmexample.api.pojo.Country;
 import com.codeinger.mvvmexample.api.retrofit.ApiCallback;
 import com.codeinger.mvvmexample.api.retrofit.ApiInterface;
-import com.codeinger.mvvmexample.di.component.AppComponent;
-import com.codeinger.mvvmexample.di.component.DaggerAppComponent;
-import com.codeinger.mvvmexample.di.modules.ApplicationModule;
-import com.codeinger.mvvmexample.di.modules.NetworkModule;
 
 import java.util.List;
 
@@ -19,25 +15,20 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
-public class CountryRepositary implements CountryRepositaryI{
+public class CountryRepository implements CountryRepositoryI {
 
     @Inject
     Retrofit mRetrofit;
 
-    AppComponent appComponent;
+    private ApiInterface countryApi;
 
-    public CountryRepositary(){
-      appComponent =  DaggerAppComponent.builder().applicationModule(new ApplicationModule(MainApplication.appContext))
-                .networkModule(new NetworkModule())
-                .build();
-      appComponent.inject(this);
+    public CountryRepository() {
+        MainApplication.getAppComponent().inject(this);
+        countryApi = mRetrofit.create(ApiInterface.class);
     }
-
-    private ApiInterface countryApi = mRetrofit.create(ApiInterface.class);
 
     @Override
     public void getCountryList(final ApiCallback<List<Country>> callback) {
-
         countryApi.loadWordPopulationList().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<Country>>() {
                     @Override
@@ -46,7 +37,7 @@ public class CountryRepositary implements CountryRepositaryI{
 
                     @Override
                     public void onNext(List<Country> countries) {
-                        if(countries.isEmpty())
+                        if (countries.isEmpty())
                             callback.onFailure("Empty List");
                         else
                             callback.onSuccess(countries);
