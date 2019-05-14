@@ -1,6 +1,6 @@
 package com.codeinger.mvvmexample.di.component;
 
-import com.codeinger.mvvmexample.MainApplication;
+import com.codeinger.mvvmexample.app.MainApplication;
 import com.codeinger.mvvmexample.di.modules.ApplicationModule;
 import com.codeinger.mvvmexample.di.modules.NetworkModule;
 

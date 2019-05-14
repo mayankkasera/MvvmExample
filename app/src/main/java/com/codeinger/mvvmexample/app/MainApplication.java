@@ -1,4 +1,4 @@
-package com.codeinger.mvvmexample;
+package com.codeinger.mvvmexample.app;
 
 import android.app.Application;
 import android.content.Context;

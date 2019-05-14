@@ -1,6 +1,6 @@
 package com.codeinger.mvvmexample.api.repo;
 
-import com.codeinger.mvvmexample.MainApplication;
+import com.codeinger.mvvmexample.app.MainApplication;
 import com.codeinger.mvvmexample.api.pojo.Country;
 import com.codeinger.mvvmexample.api.retrofit.ApiCallback;
 import com.codeinger.mvvmexample.api.retrofit.ApiInterface;
